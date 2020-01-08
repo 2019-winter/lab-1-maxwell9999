@@ -14,7 +14,7 @@ jupyter:
 ---
 
 # Name(s)
-**PUT YOUR FULL NAME(S) HERE**
+**Maxwell Taylor**
 
 
 **Instructions:** This is an individual assignment, but you may discuss your code with your neighbors.
@@ -46,40 +46,77 @@ For the following exercises please read the Python appendix in the Marsland text
 ## Exercise 1
 
 ```python
-# YOUR SOLUTION HERE
-#a=1000
-print('this is my answer',a+1) 
+import numpy as np
+```
+
+```python
+a = np.array([[2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2], [2, 2, 2, 2]])
+a
+```
+
+```python
+a = np.full((6, 4), 2)
+a
 ```
 
 ## Exercise 2
 
 ```python
-# YOUR SOLUTION HERE
-a=2000
+b = np.full((6, 4), 1)
+np.fill_diagonal(b, 3)
+b
 ```
 
 ## Exercise 3
 
+
+Yes, a * b works cause the dimensions are the same. The dot product doesn't work because the number of columns in a is not equal to the rows in b.
+
 ```python
-# YOUR SOLUTION HERE
+a * b
+```
+
+```python
+np.dot(a,b)
 ```
 
 ## Exercise 4
 
+
+The first transposes a to dot along the 6 axis and result in 4 x 4. Second does the opposite.
+
 ```python
-# YOUR SOLUTION HERE
+np.dot(a.transpose(), b)
+```
+
+```python
+np.dot(a, b.transpose())
 ```
 
 ## Exercise 5
 
 ```python
-# YOUR SOLUTION HERE
+def helloWorld():
+    display("Hello World") #could also use print
+
+helloWorld()
 ```
 
 ## Exercise 6
 
 ```python
-# YOUR SOLUTION HERE
+def outputStats(i, array):
+    print("Array " + str(i) + " stats:")
+    print("Mean: " + str(np.mean(array)))
+    print("Sum: " + str(np.sum(array)))
+    print("Median: " + str(np.median(array)))
+    print("Max: " + str(np.amax(array)))
+
+def genRandArrays():
+    for i in range(4):
+        outputStats(i, np.random.randint(10, size=(i+1)))
+    
+genRandArrays()
 ```
 
 ## Exercise 7
