@@ -122,7 +122,16 @@ genRandArrays()
 ## Exercise 7
 
 ```python
-# YOUR SOLUTION HERE
+def testfunc(x):
+    c = 0
+    for i in range(x.shape[0]):
+        for j in range(x.shape[1]):
+            if x[i,j] == 1:
+                c += 1
+    
+    return c, len(np.where(a==1)[0])
+display(testfunc(a))
+display(testfunc(b))
 ```
 
 ## Excercises 8-???
@@ -133,28 +142,37 @@ While the Marsland book avoids using another popular package called Pandas, we w
 Repeat exercise A.1 from Marsland, but create a Pandas DataFrame instead of a NumPy array.
 
 ```python
-# YOUR SOLUTION HERE
+import pandas as pd
+```
+
+```python
+dfA = pd.DataFrame(a)
 ```
 
 ## Exercise 9
 Repeat exercise A.2 using a DataFrame instead.
 
 ```python
-# YOUR SOLUTION HERE
+dfB = pd.DataFrame(b)
+#b.iloc[range(4),range(4)] = 3
 ```
 
 ## Exercise 10
 Repeat exercise A.3 using DataFrames instead.
 
 ```python
-# YOUR SOLUTION HERE
+dfA * dfB
+```
+
+```python
+dfA.dot(dfB)
 ```
 
 ## Exercise 11
 Repeat exercise A.7 using a dataframe.
 
 ```python
-# YOUR SOLUTION HERE
+
 ```
 
 ## Exercises 12-14
@@ -164,7 +182,7 @@ Now let's look at a real dataset, and talk about ``.loc``. For this exercise, we
 titanic_df = pd.read_csv(
     "https://raw.githubusercontent.com/dlsun/data-science-book/master/data/titanic.csv"
 )
-titanic_df
+titanic_df.head()
 ```
 
 Notice how we have nice headers and mixed datatypes? That is one of the reasons we might use Pandas. Please refresh your memory by looking at the 10 minutes to Pandas again, but then answer the following.
@@ -174,7 +192,7 @@ Notice how we have nice headers and mixed datatypes? That is one of the reasons 
 How do you select the ``name`` column without using .iloc?
 
 ```python
-## YOUR SOLUTION HERE
+titanic_df["name"]
 ```
 
 ## Exercise 13
@@ -185,11 +203,16 @@ After setting the index to ``sex``, how do you select all passengers that are ``
 titanic_df.set_index('sex',inplace=True)
 ```
 
+```python
+titanic_df.loc["female"]
+```
+
 ## Exercise 14
 How do you reset the index?
 
 ```python
-## YOUR SOLUTION HERE
+titanic_df.reset_index()
+titanic_df
 ```
 
 ```python
