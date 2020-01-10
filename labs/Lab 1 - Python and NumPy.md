@@ -172,7 +172,16 @@ dfA.dot(dfB)
 Repeat exercise A.7 using a dataframe.
 
 ```python
-
+def testfunc(x):
+    c = 0
+    for i in range(x.shape[0]):
+        for j in range(x.shape[1]):
+            if x.iloc[i,j] == 1:
+                c += 1
+    
+    return c, len(np.where(a==1)[0])
+display(testfunc(dfA))
+display(testfunc(dfB))
 ```
 
 ## Exercises 12-14
@@ -211,7 +220,7 @@ titanic_df.loc["female"]
 How do you reset the index?
 
 ```python
-titanic_df.reset_index()
+titanic_df.reset_index(inplace = True)
 titanic_df
 ```
 
